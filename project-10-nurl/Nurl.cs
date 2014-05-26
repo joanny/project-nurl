@@ -30,6 +30,7 @@ namespace Project_10_Nurl
 		{
 			this.url = uneUrl;
 			this.commande =  uneCommande;
+			this.option = uneOption;
 		}
 	}
 }

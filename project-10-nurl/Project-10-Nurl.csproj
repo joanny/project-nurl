@@ -57,6 +57,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ActionUrl.cs" />
+    <Compile Include="Affichage.cs" />
     <Compile Include="Controller.cs" />
     <Compile Include="ControleSaisie.cs" />
     <Compile Include="Nurl.cs" />

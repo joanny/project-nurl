@@ -26,8 +26,7 @@ namespace Project_10_Nurl
 		/**
 		 *	Permet de valid la saisie pour le use case show
 		 */
-		public static bool validSaisieShow(string arguments){
-			string[] tab =  arguments.Split(' ');			
+		public static bool validSaisieShow(string[] tab){
 			string get = "get";
 			string url = "-url";
 			
@@ -45,8 +44,7 @@ namespace Project_10_Nurl
 		/**
 		 *	Permet de valid la saisie pour le use case show and save
 		 */
-		public static bool validSaisieSave(string arguments){
-			string[] tab =  arguments.Split(' ');			
+		public static bool validSaisieSave(string[] tab){
 			string get = "get";
 			string url = "-url";
 			string save = "-save";
@@ -56,7 +54,7 @@ namespace Project_10_Nurl
 				if ( tab[1].Equals(url)){
 					if ( IsUrlValid(tab[2])){
 						if (tab[3].Equals(save)){
-							if (RepExist(tab[4])){
+							if (RepExist(ActionUrl.getRepName())){
 								valid  = true;
 							}else{
 							Console.Write("rep faux");

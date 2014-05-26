@@ -21,37 +21,41 @@ namespace Project_10_Nurl
 			
 		}
 		
-		public bool doJob(string arguments){
+		public bool doJob(string[] args){
 			bool exec = false;
-			//bool valid = ControleSaisie.validSaisieShow(arguments);
-			bool validSave = ControleSaisie.validSaisieSave(arguments);
-			
-			string[] args = ControleSaisie.getArgs(arguments);
-		
-			if (validSave){
-				exec = true;
+
 				switch (args.Length){
 						case 3:  {
 							Console.Write(" 3 arg");
-							Nurl uneCmd = new Nurl(args[2], args[1]);
-							string content = ActionUrl.getWebContent(uneCmd);
+							
+							if (ControleSaisie.validSaisieShow(args)){
+								Nurl uneCmd = new Nurl(args[2], args[1]);
+								string content = ActionUrl.getWebContent(uneCmd);
+								Affichage.show(content);
+								exec = true;
+							}
+							
 							break;
 						}
 						case 5: {
 							Console.Write(" 5 arg");
-							Nurl uneCmd = new Nurl(args[2], args[1], args[4]);
-							ActionUrl.getWebContentAndSave(uneCmd);
+							if (ControleSaisie.validSaisieSave(args)){
+								Nurl uneCmd = new Nurl(args[2], args[4], args[1]);
+								ActionUrl.getWebContentAndSave(uneCmd);
+								exec = true;
+							}
+							
 							break;
 						}
 						default : {
-							Console.Write(" wrong req");
+							Console.Write(" -- arguments incorrectes");
 							exec = false;
 							break;
 						}
 				}
-			}
 			return exec;
-		}
+			}
+			
 		
 		
 		
@@ -59,20 +63,15 @@ namespace Project_10_Nurl
     {
         bool pingable = false;
         Ping pinger = new Ping();
-
         try
         {
             PingReply reply = pinger.Send(nameOrAddress);
-
             pingable = reply.Status == IPStatus.Success;
         }
         catch (PingException)
         {
-            // Discard PingExceptions and return false;
         }
-
         return pingable;
-    
 	}
 	}
 }

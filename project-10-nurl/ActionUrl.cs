@@ -10,11 +10,17 @@ using System;
 using System.Net;
 namespace Project_10_Nurl
 {
+	
 	/// <summary>
 	/// Description of Action.
 	/// </summary>
 	public class ActionUrl
 	{
+			public static string REP_NAME = "C:/fileDownload/" ;
+			
+			public static string getRepName(){
+				return REP_NAME;
+			}
 			public static string getWebContent(Nurl uneCmd){
 				Console.Write(uneCmd.url);
 				WebClient client = new WebClient ();
@@ -25,8 +31,7 @@ namespace Project_10_Nurl
 				Console.Write(uneCmd.url);
 				WebClient client = new WebClient();
 				
-				Console.Write(uneCmd.url);
-				client.DownloadFile(uneCmd.url, "C:/vm/ok.html");
+				client.DownloadFile(uneCmd.url, getRepName()+uneCmd.option );
 			}
 	}
 }

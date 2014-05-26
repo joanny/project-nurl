@@ -15,14 +15,17 @@ namespace Project_10_Nurl
 		public static void Main(string[] args)
 		{
 			//string cmd = "get -url https://www.google.fr/";
-			string cmdSave = "get -url https://www.facebook.com/ -save C:/vm/";
+			//string cmdSave = "get -url https://www.facebook.com/ -save test.html";
 			Controller controller = new Controller();
+			string[] arg;
+			do{
+				Console.Write("Entrez une commande :");
+				string cmd = Console.ReadLine();
+				arg =  cmd.Split(' ');
+			}
+			while (!controller.doJob(arg));
 			
-			bool val =	controller.doJob(cmdSave);
-		
-			
-			
-			Console.ReadKey(true);
+			Console.ReadKey();
 		}
 	}
 }
